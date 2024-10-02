@@ -60,7 +60,7 @@ class UserProfileView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
-
+#if user is logged in update the object of the user
 class UserProfileUpdateView(generics.UpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserProfileUpdateSerializer
@@ -71,22 +71,23 @@ class UserProfileUpdateView(generics.UpdateAPIView):
         return self.request.user
 
 
-
+# Only logged users can create the post
 class CreateBlogPostView(generics.CreateAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
-    permission_classes = [IsAuthenticated]  # Only logged-in users can create posts
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         # Set the author as the current logged-in user
         serializer.save(author=self.request.user)
 
-
+# List all the posts for every users
 class ListBlogPostView(generics.ListAPIView):
     queryset = BlogPost.objects.all().order_by('-created_at')
     serializer_class = BlogPostSerializer
     permission_classes = [AllowAny]
 
+# Get a single post details
 class SingleBlogPostView(generics.RetrieveAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
@@ -97,7 +98,7 @@ class UpdateBlogPostView(generics.UpdateAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
     permission_classes = [IsAuthenticated]
-    lookup_field = 'id'  # Allow lookup by 'id'
+    lookup_field = 'id'
 
     def perform_update(self, serializer):
         post = self.get_object()
@@ -106,15 +107,13 @@ class UpdateBlogPostView(generics.UpdateAPIView):
             raise PermissionDenied("You do not have permission to edit this post.")
         serializer.save()
 
-
+# Only logged users can delete their profile
 class DeleteBlogPostView(generics.DestroyAPIView):
     queryset = BlogPost.objects.all()
     permission_classes = [IsAuthenticated]
-    lookup_field = 'id'  # Allow lookup by 'id'
+    lookup_field = 'id'
 
     def perform_destroy(self, instance):
-        print(f"Trying to delete post with ID: {instance.id}")
-        print(f"Post Author: {instance.author}, Current User: {self.request.user}")
         # Check if the user is the author of the post
         if instance.author != self.request.user:
             raise PermissionDenied("You do not have permission to delete this post.")
