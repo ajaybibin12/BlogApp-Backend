@@ -1,0 +1,12 @@
+# Python environment folder
+env/
+
+# User credentials file
+user_credentials.json
+blogAPI.postman_collection.json
+
+# Ignore Django-related files
+*.pyc
+__pycache__/
+db.sqlite3
+.env
