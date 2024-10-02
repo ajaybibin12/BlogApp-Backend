@@ -11,8 +11,11 @@ from rest_framework.permissions import AllowAny
 from .serializers import UserSerializer,CustomTokenObtainPairSerializer,BlogPostSerializer,UserProfileUpdateSerializer
 from .models import BlogPost
 from rest_framework.exceptions import PermissionDenied
+from django.http import HttpResponse
 
 
+def home(request):
+    return HttpResponse("Welcome to the Blog API!")
 
 User = get_user_model()
 
