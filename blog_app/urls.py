@@ -3,7 +3,7 @@ from .views import SignupView, CustomLoginView,CreateBlogPostView,ListBlogPostVi
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 urlpatterns = [
-    path('',home,name='home')
+    path('',home,name='home'),
     path('signup/', SignupView.as_view(), name='signup'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('profile/<int:pk>/', UserProfileView.as_view(), name='user-profile'),
