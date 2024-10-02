@@ -40,7 +40,7 @@ def main():
         ) from exc
     
     # If no port is specified, default to 8000
-    port = os.environ.get('PORT', '8000')
+    port = os.environ.get('PORT', '9000')
 
     # Modify sys.argv directly to include the host and port
     if 'runserver' in sys.argv:
