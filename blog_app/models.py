@@ -20,7 +20,7 @@ class BlogPost(models.Model):
     tags = models.ManyToManyField(BlogTag, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='blog_images/', null=True, blank=True)
 
     def __str__(self):
         return self.title
