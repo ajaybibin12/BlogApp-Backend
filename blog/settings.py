@@ -75,7 +75,7 @@ SIMPLE_JWT = {
 
 
 MIDDLEWARE = [
-    # 'corsheaders.middleware.CorsMiddleware',  # Place this at the top
+    'corsheaders.middleware.CorsMiddleware',  # Place this at the top
     # 'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
