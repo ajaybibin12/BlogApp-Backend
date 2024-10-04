@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-xg2_23g0ji-!)*e3g7!#@)u=1d7yanlpz*y(w_4ub=cazd=3r&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['blogapp-backend-3ye2.onrender.com','localhost','127.0.0.1','127.0.0.1:3000']
+ALLOWED_HOSTS = ['blogapp-backend-3ye2.onrender.com','https://react-blog-app-x9xp.onrender.com','localhost','127.0.0.1','127.0.0.1:3000']
 
 
 # Application definition
