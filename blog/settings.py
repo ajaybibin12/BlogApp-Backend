@@ -86,11 +86,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "https://blogapp-backend-3ye2.onrender.com",
-#     "https://react-blog-app-x9xp.onrender.com"
-# ]
+CORS_ALLOWED_ORIGINS = [
+    # "http://localhost:3000",
+    # "https://blogapp-backend-3ye2.onrender.com",
+    "https://react-blog-app-x9xp.onrender.com/api/"
+]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
