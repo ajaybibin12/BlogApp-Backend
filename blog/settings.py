@@ -88,6 +88,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://blogapp-backend-3ye2.onrender.com"
 ]
 
 CORS_ALLOW_METHODS = [
