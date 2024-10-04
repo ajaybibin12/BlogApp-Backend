@@ -11,7 +11,7 @@ User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-    profile_picture_as_base64 = serializers.SerializerMethodField()  # To return base64 string in response
+    profile_picture_as_base64 = serializers.SerializerMethodField()  
 
     class Meta:
         model = User
@@ -33,9 +33,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserProfileUpdateSerializer(serializers.ModelSerializer):
-    profile_picture_base64 = serializers.CharField(write_only=True, allow_null=True, required=False)  # Input base64 string
-    profile_picture = serializers.ImageField(read_only=True)  # URL of the profile picture
-    profile_picture_as_base64 = serializers.SerializerMethodField()  # To return base64 string in response
+    profile_picture_base64 = serializers.CharField(write_only=True, allow_null=True, required=False)  
+    profile_picture = serializers.ImageField(read_only=True) 
+    profile_picture_as_base64 = serializers.SerializerMethodField()  
 
     class Meta:
         model = User

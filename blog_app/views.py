@@ -12,6 +12,9 @@ from .serializers import UserSerializer,CustomTokenObtainPairSerializer,BlogPost
 from .models import BlogPost
 from rest_framework.exceptions import PermissionDenied
 from django.http import HttpResponse
+import base64
+from django.core.files.base import ContentFile
+from django.utils.html import escape 
 
 
 def home(request):
@@ -112,7 +115,20 @@ class UpdateBlogPostView(generics.UpdateAPIView):
         # Check if the user is the author of the post
         if post.author != self.request.user:
             raise PermissionDenied("You do not have permission to edit this post.")
+        serializer_instance = serializer.save()
+
+        # Handle image update from base64 string
+        image_base64 = self.request.data.get('image_base64', None)
+        if image_base64:
+            try:
+                format, imgstr = image_base64.split(';base64,')
+                ext = format.split('/')[-1]
+                serializer_instance.image = ContentFile(base64.b64decode(imgstr), name=f"{escape(serializer_instance.title)}.{ext}")
+                serializer_instance.save()
+            except Exception as e:
+                raise serializers.ValidationError("Invalid image data")
         serializer.save()
+
 
 # Only logged users can delete their profile
 class DeleteBlogPostView(generics.DestroyAPIView):
