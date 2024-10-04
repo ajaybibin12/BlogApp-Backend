@@ -76,7 +76,7 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Place this at the top
-    # 'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,7 +88,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://blogapp-backend-3ye2.onrender.com"
+    "https://blogapp-backend-3ye2.onrender.com",
+    "https://react-blog-app-x9xp.onrender.com"
 ]
 
 CORS_ALLOW_METHODS = [
