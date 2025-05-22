@@ -6,7 +6,7 @@ class User(AbstractUser):
     mobile = models.CharField(max_length=20, null=False)
     profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
 
-# Model to create Blog Tage
+# Model to create Blog Tag
 class BlogTag(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
