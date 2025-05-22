@@ -65,7 +65,7 @@ class UserProfileUpdateSerializer(serializers.ModelSerializer):
         if profile_picture_base64:
             try:
                 format, imgstr = profile_picture_base64.split(';base64,')
-                ext = format.split('/')[-1]  # Extract the file extension (e.g., jpg, png)
+                ext = format.split('/')[-1]  # Extract the file extension
                 instance.profile_picture = ContentFile(base64.b64decode(imgstr), name=f"{instance.username}_profile.{ext}")
             except Exception as e:
                 raise serializers.ValidationError("Invalid image data for profile picture.")
