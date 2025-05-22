@@ -73,11 +73,9 @@ class UserProfileUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
-        # Return the currently authenticated user
         return self.request.user
     
     def patch(self, request, *args, **kwargs):
-        # print("Request data:", request.data)
         return super().patch(request, *args, **kwargs)
 
 
